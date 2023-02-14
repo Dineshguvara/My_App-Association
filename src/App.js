@@ -1,25 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+
+import * as React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
+import Layout from './pages/Layout';
+import Dashboard  from './pages/Dashboard';
+ 
+import Leaders from './pages/leader/Leaders';
+import LeadersForm from './pages/leader/LeadersForm';
+
+import Members from './pages/member/Members';
+import MembersForm  from './pages/member/MembersForm';
+
+import AssociationPayments from './pages/association_payment/AssociationPayments';
+import AssociationPaymentsForm  from './pages/association_payment/AssociationPaymentsForm';
+
+import AssociationExpenses from'./pages/association_expenses/AssociationExpenses';
+import AssociationExpensesForm from'./pages/association_expenses/AssociationExpensesForm';
+
+import EventGallery from './pages/event_gallery/EventGallery';
+import EventGalleryForm from './pages/event_gallery/EventGalleryForm';
+
+import History from './pages/history/History';
+import HistoryForm from './pages/history/HistoryForm';
+
+import Invitation from './pages/invitation/Invitation';
+import InvitationForm from './pages/invitation/InvitationForm';
+
+import MembersPayment from './pages/members_payment/MembersPayment';
+import MembersPaymentForm from './pages/members_payment/MembersPaymentForm';
+
+import Login from './pages/login/Login';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return (  
+    
+  <ChakraProvider>
+     <Routes>
+      <Route exact path='/login'  element={<Login/>} />
+
+       <Route path='/' element={<Layout/>} >              
+         <Route index  element={<Dashboard/>} />
+
+         <Route path='members' element={<Members/>} />
+         <Route path='create_members' element={<MembersForm/>} />
+
+         <Route path='leaders' element={<Leaders/>} />
+         <Route path='create_leaders' element={<LeadersForm/>} />
+
+         <Route path='ass_payment' element={<AssociationPayments/>} />
+         <Route path='create_ass_payment' element={<AssociationPaymentsForm/>} />
+
+         <Route path='ass_expenses' element={<AssociationExpenses/>} />
+         <Route path='create_ass_expenses' element={<AssociationExpensesForm/>} />
+
+         <Route path='gallery' element={<EventGallery/>} />
+         <Route path='create_gallery' element={<EventGalleryForm/>} />
+
+         <Route path='history' element={<History/>} />
+         <Route path='create_history' element={<HistoryForm/>} />
+
+         <Route path='invitation' element={<Invitation/>} />
+         <Route path='create_invitation' element={<InvitationForm/>} />
+
+         <Route path='members_payment' element={<MembersPayment/>} />
+         <Route path='create_members_payment' element={<MembersPaymentForm/>} />
+
+       </Route>
+     </Routes>
+   </ChakraProvider>
+
+  )
 }
 
 export default App;
+
