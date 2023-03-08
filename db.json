@@ -11,6 +11,12 @@
       "id": "admin@gmail.com",
       "password": "gocode",
       "conpassword": "gocode"
+    },
+    {
+      "name": "demo",
+      "id": "demo@gmail.com",
+      "password": "12345",
+      "conpassword": "12345"
     }
   ],
   "membersPay": [

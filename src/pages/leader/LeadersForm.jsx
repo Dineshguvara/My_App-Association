@@ -14,7 +14,7 @@ import moment from 'moment';
 
 const schema = yup.object().shape({
 name:yup.string().required('Name is required'),
-posting:yup.string().required('Posting is required').object(),
+posting:yup.string().required('Posting is required'),
 fromdate:yup.date().typeError('Date is mandatory').required(),
 todate:yup.date().typeError('Date is mandatory').required()
 })
