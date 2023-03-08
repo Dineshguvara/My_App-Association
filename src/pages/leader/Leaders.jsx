@@ -1,7 +1,7 @@
+import React, {useState, useEffect} from 'react';
 import { Button } from '@chakra-ui/react';
 import '../page.css';
-import  LeadersProfileData from './LeadersData';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
     Table,
     Thead,
@@ -11,9 +11,40 @@ import {
     Td,
     TableContainer,
   } from '@chakra-ui/react'
+import moment from 'moment';
 
 
 function Leaders() {
+
+    const navi = useNavigate();
+
+    const [lead, setLead] = useState(null)
+      
+    const LoadEdit =(id) =>{
+        navi("/create_leaders/"+ id   );
+        
+    }
+    const RemoveFunc =(id) =>{
+        if(window.confirm('Do you want to remove?')){
+            fetch("http://localhost:8000/leaders/"+ id,{
+            method:"DELETE"
+            }).then((res)=>{
+                window.location.reload();             
+            }).catch((err)=>{
+            console.log(err.message)
+            })
+        }
+    }
+
+    useEffect(() => {
+      fetch("http://localhost:8000/leaders").then((res)=>{
+        return res.json();
+      }).then((resp)=>{
+        setLead(resp);
+      }).catch((err)=>{
+        console.log(err.message);
+      })
+    }, [])
   
     return  (
      
@@ -38,23 +69,22 @@ function Leaders() {
                         </Tr>
                         </Thead>
                         <Tbody> 
-                        {                
-                            LeadersProfileData.map((item)=>{
-                                return(
-                                    <Tr>
-                                    <Td>{item.Id}</Td>
-                                    <Td>{item.Name}</Td>
-                                    <Td>{item.PostName}</Td>
-                                    <Td>{item.From}</Td>
-                                    <Td>{item.To}</Td>            
+                        {   lead &&
+                             lead.map(item=>(
+                                <Tr key={item.id} >
+                                    <Td>{item.id}</Td>
+                                    <Td>{item.name}</Td>
+                                    <Td>{item.posting.label}</Td>
+                                    <Td>{moment(item.fromdate).utc().format('DD-MM-YYYY')} </Td>
+                                    <Td>{moment(item.todate).utc().format('DD-MM-YYYY')} </Td>
+                                     
                                     <Td>
-                                        <Button   >Edit</Button>
-                                        <Button  >Delete</Button>
+                                        <Button onClick={()=>{LoadEdit(item.id)}} colorScheme='blue'> Edit </Button>
+                                        <Button onClick={()=>{RemoveFunc(item.id)}} colorScheme='red' > Delete </Button>
                                     </Td>
-                                    </Tr>  
-                                    )
-                                })                                                            
-                            }         
+                                </Tr>
+                            ))                                                            
+                        }    
                         </Tbody>                        
                     </Table>
                 </TableContainer>

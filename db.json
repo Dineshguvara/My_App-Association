@@ -1,0 +1,236 @@
+{
+  "register": [
+    {
+      "name": "1233",
+      "password": "pass@123",
+      "conpassword": "pass@123",
+      "id": "UK@gmail.com"
+    },
+    {
+      "name": " dxascaac",
+      "id": "admin@gmail.com",
+      "password": "gocode",
+      "conpassword": "gocode"
+    }
+  ],
+  "membersPay": [
+    {
+      "description": "123",
+      "date": "2023-02-07T18:30:00.000Z",
+      "id": 2
+    },
+    {
+      "description": "wanna meet",
+      "date": "2023-02-14T18:30:00.000Z",
+      "id": 6
+    },
+    {
+      "description": "bjk;;",
+      "date": "2023-02-07T18:30:00.000Z",
+      "id": 7
+    },
+    {
+      "description": "n ,,.//\njvdwkns\nlkvdnkldsnklds",
+      "date": "2023-02-02T18:30:00.000Z",
+      "id": 8
+    },
+    {
+      "description": "yfyu",
+      "date": "2023-02-27T18:30:00.000Z",
+      "id": 9
+    }
+  ],
+  "members": [
+    {
+      "id": 1,
+      "name": "safi",
+      "mobilenum": 9360572364,
+      "companyname": "coderPlays",
+      "address": "123 street, abc City",
+      "status": "Be Brave Buddy"
+    }
+  ],
+  "invitation": [
+    {
+      "id": 1,
+      "title": "Invitation Title",
+      "message": "this is Invitation message 1"
+    },
+    {
+      "title": "title 3",
+      "message": "fjeiwoii3",
+      "id": 2
+    },
+    {
+      "title": "title4",
+      "message": "modern wate",
+      "id": 3
+    }
+  ],
+  "history": [
+    {
+      "id": 1,
+      "title": "History Title",
+      "message": "This is History message 1"
+    },
+    {
+      "title": "history title 3",
+      "message": "do want you want",
+      "id": 2
+    },
+    {
+      "title": "history title 4",
+      "message": "get away from the shit",
+      "id": 3
+    },
+    {
+      "title": "his title 5",
+      "message": "you can reach the sky",
+      "id": 4
+    },
+    {
+      "title": "his title 6",
+      "message": "go beyond your limits\n",
+      "id": 5
+    },
+    {
+      "title": "try 1 ",
+      "message": "go",
+      "id": 6
+    },
+    {
+      "title": "optimist",
+      "message": "always be postitive\n",
+      "id": 7
+    },
+    {
+      "title": "dfwqqwd",
+      "message": "dwq",
+      "id": 8
+    },
+    {
+      "title": "dwq",
+      "message": "ew",
+      "id": 9
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "title": "Gallery Title",
+      "message": "this is gallery message 1"
+    },
+    {
+      "title": "title gal 3",
+      "message": "founder of ios",
+      "id": 2
+    },
+    {
+      "title": "title gal 4",
+      "message": "wonder of worlds",
+      "id": 3
+    },
+    {
+      "title": "ttle 5",
+      "message": "doer",
+      "id": 4
+    }
+  ],
+  "assexpenses": [
+    {
+      "id": 1,
+      "title": "Ass expenses Title",
+      "message": "this is ass exp message 1"
+    },
+    {
+      "title": "title Ass exp 2",
+      "message": "founder of ioandroid",
+      "id": 2
+    },
+    {
+      "title": "title ass exp 4",
+      "message": "wonder of ocean",
+      "id": 3
+    }
+  ],
+  "asspayment": [
+    {
+      "id": 1,
+      "paymentname": "Credit",
+      "amount": 1000,
+      "date": "",
+      "enddate": "",
+      "status": "feel the pressure",
+      "description": "Pressure like a dip dip, that nevet stop"
+    },
+    {
+      "enddate": "2023-02-03T18:30:00.000Z",
+      "description": "gcgh hjfwq",
+      "status": "  hgvjhvhjqwqw",
+      "date": "2023-02-13T18:30:00.000Z",
+      "amount": 12345678904,
+      "paymentname": "credit",
+      "id": 2
+    },
+    {
+      "enddate": "2023-03-06T18:30:00.000Z",
+      "description": "[l,;l",
+      "status": "9oijho",
+      "date": "2023-02-28T18:30:00.000Z",
+      "amount": 987,
+      "paymentname": "gchg",
+      "id": 3
+    },
+    {
+      "enddate": "2023-03-06T18:30:00.000Z",
+      "description": "[l,;l",
+      "status": "9oijho",
+      "date": "2023-02-28T18:30:00.000Z",
+      "amount": 987,
+      "paymentname": "gchg",
+      "id": 4
+    }
+  ],
+  "leaders": [
+    {
+      "id": 1,
+      "name": "govana",
+      "posting": {
+        "label": "then",
+        "value": "then"
+      },
+      "fromdate": "04/10/19",
+      "todate": "01/03/18"
+    },
+    {
+      "todate": "2022-11-27T18:30:00.000Z",
+      "fromdate": "2023-03-21T18:30:00.000Z",
+      "name": "dinesh",
+      "posting": {
+        "label": "President",
+        "value": "president"
+      },
+      "id": 2
+    },
+    {
+      "todate": "2023-03-14T18:30:00.000Z",
+      "fromdate": "2023-03-13T18:30:00.000Z",
+      "name": "saffrish",
+      "posting": {
+        "label": "safi",
+        "value": "safi"
+      },
+      "id": 3
+    },
+    {
+      "todate": "2023-03-02T18:30:00.000Z",
+      "fromdate": "2023-03-17T18:30:00.000Z",
+      "name": " dxascaac",
+      "posting": {
+        "label": "theni",
+        "value": "theni"
+      },
+      "id": 4
+    }
+  ]
+}

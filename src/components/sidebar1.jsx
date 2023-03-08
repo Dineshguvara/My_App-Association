@@ -37,36 +37,24 @@ import {
 } from "react-icons/fi";
 
 const LinkItems = [
-  { name: "Dasboard", icon: FiStar, to: '/' },
-  { name: "Members Profile", icon: FiCompass, to: 'members' },
-  { name: "History", icon: FiTrendingUp, to: 'history' },
-  { name: "Invitation", icon: FiTrendingUp, to: 'invitation' },
-  { name: "Association Payment", icon: FiTrendingUp, to: 'ass_payment' },
-  { name: "Members Payment ", icon: FiTrendingUp, to: 'members_payment' },
-  { name: "Advertishment", icon: FiTrendingUp },
-  { name: "Leaders Details ", icon: FiTrendingUp, to: 'Leaders' },
-  { name: "Vote Polls ", icon: FiTrendingUp },
-  { name: "Event Gallery   ", icon: FiTrendingUp, to: 'gallery' },
-  { name: "Association Expenses   ", icon: FiTrendingUp, to: 'ass_expenses' },
-  { name: "Settings", icon: FiSettings },
+
+  { name: 'Dasboard', icon:FiStar, to:'/' },
+  { name: 'Members Profile', icon: FiCompass,  to:'members' },
+  { name: 'History', icon: FiTrendingUp, to:'history' },
+  { name: 'Invitation', icon: FiTrendingUp,to:'invitation' },
+  { name: 'Association Payment', icon: FiTrendingUp, to:'ass_payment' },
+  { name: 'Members Payment ', icon: FiTrendingUp, to:'members_payment' },
+  { name: 'Advertishment', icon: FiTrendingUp },
+  { name: 'Leaders Details ', icon: FiTrendingUp, to:'Leaders' },
+  { name: 'Vote Polls ', icon: FiTrendingUp },
+  { name: 'Event Gallery   ', icon: FiTrendingUp,to:'gallery' },
+  { name: 'Association Expenses ', icon: FiTrendingUp, to:'ass_expenses'  },
+
 ];
 
 export default function SidebarWithHeader({ children }) {
 
-    // const navi=useNavigate();
-    // const[logout,setLogout]= useState(false);
     
-    // useEffect(()=>{
-    //   if(!localStorage.getItem('auth')) 
-    //   navi('/login');
-    // },[logout])
-
-    // const logoutHandler = e =>{
-    //     e.preventDefault();
-    //     localStorage.removeItem('auth') 
-    //     setLogout(true);
-    // }
-     
   
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -163,19 +151,19 @@ const NavItem = ({ to, icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-    const navi=useNavigate();
-    const[logout,setLogout]= useState(false);
+    // const navi=useNavigate();
+    // const[logout,setLogout]= useState(false);
     
-    useEffect(()=>{
-      if(!localStorage.getItem('auth')) 
-      navi('/login');
-    },[logout])
+    // useEffect(()=>{
+    //   if(!localStorage.getItem('auth')) 
+    //   navi('/login');
+    // },[logout])
 
-    const logoutHandler = e =>{
-        e.preventDefault();
-        localStorage.removeItem('auth') 
-        setLogout(true);
-    }
+    // const logoutHandler = e =>{
+    //     e.preventDefault();
+    //     localStorage.removeItem('auth') 
+    //     setLogout(true);
+    // }
 
   return (
     <Flex
@@ -234,7 +222,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                   ml="2"
                 >
                   {/* <Text  onClick={logoutHandler} fontSize="sm"> logout</Text> */}
-                  <Button colorScheme="blue" onClick={logoutHandler}>
+                  <Button colorScheme="blue"  >
                     Logout
                   </Button>
                 </VStack>

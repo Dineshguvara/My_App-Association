@@ -32,6 +32,28 @@ section td button{
 .form input,
 .form textarea,
 .form Select {
-    width: 30%;
     background-color: #fff;
+}
+.form1 input,
+.form1 textarea,
+.form1 Select {
+    width:30%;
+    background-color: #fff;
+}
+.form p,
+.form1 p,
+.clr-red{
+    color:red;
+}
+.btn{
+    margin-top:50px;
+}
+.desp{  
+    max-width: 10px !important;
+}
+.reg{
+    text-decoration: underline;
+}
+.widt{
+    width:52% !important;
 }

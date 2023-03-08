@@ -1,6 +1,7 @@
+import React,{useState, useEffect} from 'react';
 import { Button } from '@chakra-ui/react';
 import '../page.css';
-import EventGalleryData from './EventGalleryData';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {
     Table,
@@ -15,13 +16,43 @@ import {
 
 function EventGallery() {
   
+    const navi = useNavigate();
+
+    const [gal, setGal] = useState(null)
+      
+    const LoadEdit =(id) =>{
+        navi("/create_gallery/"+ id   );
+        
+    }
+    const RemoveFunc =(id) =>{
+        if(window.confirm('Do you want to remove?')){
+            fetch("http://localhost:8000/gallery/"+ id,{
+            method:"DELETE"
+            }).then((res)=>{
+                window.location.reload();             
+            }).catch((err)=>{
+            console.log(err.message)
+            })
+        }
+    }
+
+    useEffect(() => {
+      fetch("http://localhost:8000/gallery").then((res)=>{
+        return res.json();
+      }).then((resp)=>{
+        setGal(resp);
+      }).catch((err)=>{
+        console.log(err.message);
+      })
+    }, [])
+
     return  (
      
     <section>
         <div  className='container' >
             <div className='btn-wrap'>
                 <Link to={'/create_gallery'}>
-                    <Button className='main-btn' colorScheme='blue'>  Add Gallery</Button>
+                    <Button className='main-btn' colorScheme='blue'>  Add New ( + ) </Button>
                 </Link>
             </div>
             <div className='table-wrap'>
@@ -31,28 +62,27 @@ function EventGallery() {
                         <Tr>
                             <Th> #</Th>
                             <Th> Title</Th>
+                            <Th> Files  </Th>
                             <Th> Message </Th>
-                            <Th> Files</Th>
                             <Th> Actions </Th>                             
                         </Tr>
                         </Thead>
                         <Tbody>
-                        {                
-                            EventGalleryData.map((item)=>{
-                                    return(
-                                    <Tr>
-                                    <Td>{item.Id}</Td>
-                                    <Td>{item.Title}</Td>
-                                    <Td>{item.Message}</Td>
-                                    <Td>{item.Files}</Td>             
+                        {   
+                            gal &&
+                             gal.map(item=>(
+                                <Tr key={item.id} >
+                                    <Td>{item.id}</Td>
+                                    <Td>{item.title}</Td>
+                                    <Td>{item.files}</Td>
+                                    <Td>{item.message}</Td>                                     
                                     <Td>
-                                        <Button   >Edit</Button>
-                                        <Button  >Delete</Button>
+                                        <Button onClick={()=>{LoadEdit(item.id)}} colorScheme='blue'> Edit </Button>
+                                        <Button onClick={()=>{RemoveFunc(item.id)}} colorScheme='red' > Delete </Button>
                                     </Td>
-                                    </Tr>  
-                                    )
-                                })                                                            
-                            }         
+                                </Tr>
+                            ))                                                            
+                        }         
                         </Tbody>                        
                     </Table>
                 </TableContainer>

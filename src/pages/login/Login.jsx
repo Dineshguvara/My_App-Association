@@ -1,39 +1,61 @@
 import React, { useState, useEffect } from "react";
-import { emailValidator } from "../../components/regexValidator";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../page.css";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  
+  useremail: yup
+    .string()
+    .email("please provide valid email")
+    .required(" Email is Mandatory"),
+  password: yup
+    .string()
+    .required("Password is mandatory")
+    .min(5, "Minimum 5 Character")
+    .max(15, "Maximum 15 characters")
+});
 
 const Login = () => {
-  const navi = useNavigate();
 
-  const [input, setInput] = useState({
-    email: "",
-    password: "",
+  const navi = useNavigate();
+ 
+  const [useremail, setUseremail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { 
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const [errorMessage, seterrorMessage] = useState("");
-
-  useEffect(() => {
-    if (localStorage.getItem('auth'))
-    navi('/');
-
+  useEffect(()=>{
+    let username = sessionStorage.getItem("user");
+    if(username==='' || username===null){
+        navi('/login')
+    }
   },[])
 
-  const handleChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
-  };
- 
-
-  const FormSubmitter = (e) => {
-    e.preventDefault();
-    if (!emailValidator(input.email))
-      return seterrorMessage("please enter vaild email id");
-      
-    if (input.email !== "admin@gmail.com" || input.password !== "pass@123")
-      return seterrorMessage("invalid email or password");
-      
-    localStorage.setItem('auth',true)
-    navi('/');
- 
+  const formSubmiter = (data) => {
+    fetch("http://localhost:8000/register/" + useremail ).then((res)=>{
+        return res.json();
+      }).then((resp)=>{         
+       console.log(resp)
+              if(resp.password === password){
+                sessionStorage.setItem("user",useremail)
+                navi('/')
+              }else{
+                console.log('password incorrect')
+              }
+      }).catch((err)=>{
+        console.log(err.message);
+      })
+    
   };
 
   return (
@@ -43,46 +65,41 @@ const Login = () => {
           className="container-login100"
           style={{ backgroundImage: 'url("images/bg-01.jpg")' }}
         >
-          <div className="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form
-              className="login100-form validate-form"
-              onSubmit={FormSubmitter}
+          <div className="wrap-login100 p-l-55 p-r-55 p-t-35 p-b-35">
+            <form className="login100-form validate-form" 
+            onSubmit={handleSubmit(formSubmiter)}
             >
               <span className="login100-form-title p-b-49">Login</span>
-              <div
-                className="wrap-input100 validate-input m-b-23"
-                data-validate="Username is reauired"
-              >
-                {errorMessage.length > 0 && (
-                  <div style={{ marginBottom: "10px", color: "red" }}>
-                    {errorMessage}
-                  </div>
-                )}
+              <div className="wrap-input100 validate-input m-b-20"  >
                 <span className="label-input100">Email</span>
                 <input
+                 {...register("useremail")}
                   className="input100"
                   type="email"
-                  name="email"
-                  placeholder="Type your username"
-                  onChange={handleChange}
+                  name="useremail"
+                  placeholder="Enter your useremail"
+                  value={useremail}
+                  onChange={e=>setUseremail(e.target.value)} 
                 />
                 <span className="focus-input100" data-symbol="" />
               </div>
+              <p className="clr-red">{errors.useremail?.message}</p><br/>
 
-              <div
-                className="wrap-input100 validate-input"
-                data-validate="Password is required"
-              >
+              <div className="wrap-input100 validate-input m-b-20"  >
                 <span className="label-input100">Password</span>
                 <input
+                 {...register("password")}
                   className="input100"
-                  type="text"
+                  type="password"
                   name="password"
-                  placeholder="Type your password"
-                  onChange={handleChange}
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={e=>setPassword(e.target.value)} 
                 />
                 <span className="focus-input100" data-symbol="" />
               </div>
+              <p className="clr-red">{errors.password?.message}</p>
+
               <div className="text-right p-t-8 p-b-31">
                 <a href="#">Forgot password?</a>
               </div>
@@ -94,7 +111,14 @@ const Login = () => {
                 </div>
               </div>
               <div className="txt1 text-center p-t-54 p-b-20">
-                <span>Or Sign Up Using</span>
+                <span>
+                  {" "}
+                  Don't you have an account ? &nbsp;{" "}
+                  <Link to="/register" className="reg">
+                    {" "}
+                    Register Here
+                  </Link>
+                </span>
               </div>
               <div className="flex-c-m">
                 <a href="#" className="login100-social-item bg1">
